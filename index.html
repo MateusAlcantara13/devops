@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Independente e o Che</title>
+<meta name="description" content="Como a efígie de Che Guevara chegou às bandeiras da Torcida Tricolor Independente, principal organizada do São Paulo FC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --ink: #151515;
+    --muted: #5d5a55;
+    --line: #e4dfd7;
+    --red: #c8102e;
+    --red-soft: #fbe9ec;
+    --black: #111111;
+    --max: 760px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #121212;
+      --surface: #1b1b1b;
+      --ink: #eeebe6;
+      --muted: #a8a39b;
+      --line: #2e2c29;
+      --red: #ff4d5e;
+      --red-soft: #2a1519;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #121212;
+    --surface: #1b1b1b;
+    --ink: #eeebe6;
+    --muted: #a8a39b;
+    --line: #2e2c29;
+    --red: #ff4d5e;
+    --red-soft: #2a1519;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--red); }
+
+  /* Barra superior */
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    max-width: 1100px; margin: 0 auto; padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    font-family: "Fraunces", serif; font-weight: 800; font-size: 18px;
+    letter-spacing: -0.01em; color: var(--ink); text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .stripes { display: inline-flex; flex-direction: column; gap: 3px; }
+  .stripes span { display: block; width: 22px; height: 4px; }
+  .stripes span:nth-child(1) { background: var(--red); }
+  .stripes span:nth-child(2) { background: var(--ink); }
+  nav { display: flex; gap: 22px; }
+  nav a {
+    color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500;
+  }
+  nav a:hover { color: var(--red); }
+  @media (max-width: 720px) { nav { display: none; } }
+
+  /* Capa */
+  .hero {
+    max-width: 1100px; margin: 0 auto; padding: 72px 16px 56px;
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center;
+  }
+  .kicker {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 18px;
+  }
+  h1 {
+    font-family: "Fraunces", serif; font-weight: 800;
+    font-size: clamp(38px, 6vw, 64px); line-height: 1.05; letter-spacing: -0.02em;
+  }
+  h1 em { font-style: italic; color: var(--red); font-weight: 600; }
+  .lede {
+    margin-top: 24px; font-size: 19px; color: var(--muted); max-width: 560px;
+  }
+  .meta {
+    margin-top: 28px; font-size: 14px; color: var(--muted);
+    display: flex; gap: 18px; flex-wrap: wrap;
+  }
+  .meta b { color: var(--ink); font-weight: 600; }
+
+  .hero-card {
+    background: var(--black); color: #fff; border-radius: 6px;
+    padding: 36px 32px; position: relative; overflow: hidden;
+  }
+  .hero-card::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 46%;
+    height: 14px; background: var(--red);
+    box-shadow: 0 18px 0 #fff;
+  }
+  .hero-card .big {
+    font-family: "Fraunces", serif; font-weight: 800; font-size: 88px; line-height: 1;
+    position: relative;
+  }
+  .hero-card .label {
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    opacity: .7; position: relative;
+  }
+  .hero-card .spacer { height: 96px; }
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; padding-top: 48px; gap: 36px; }
+  }
+
+  /* Números */
+  .stats {
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    background: var(--surface);
+  }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto; padding: 28px 16px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .stat .n {
+    font-family: "Fraunces", serif; font-weight: 800; font-size: 34px; color: var(--red);
+    line-height: 1.1;
+  }
+  .stat .t { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  @media (max-width: 720px) { .stats-inner { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Texto */
+  main { padding: 24px 16px 80px; }
+  section { max-width: var(--max); margin: 64px auto 0; }
+  .num {
+    font-family: "Fraunces", serif; font-size: 14px; font-weight: 600;
+    color: var(--red); letter-spacing: 0.1em;
+  }
+  h2 {
+    font-family: "Fraunces", serif; font-weight: 800;
+    font-size: clamp(28px, 4vw, 38px); line-height: 1.15; letter-spacing: -0.015em;
+    margin: 6px 0 20px;
+  }
+  h3 {
+    font-family: "Fraunces", serif; font-weight: 600; font-size: 21px;
+    margin-bottom: 8px;
+  }
+  p + p { margin-top: 18px; }
+
+  blockquote {
+    margin: 32px 0; padding: 4px 0 4px 24px;
+    border-left: 4px solid var(--red);
+    font-family: "Fraunces", serif; font-size: 23px; line-height: 1.4;
+  }
+  blockquote cite {
+    display: block; margin-top: 10px; font-family: "Inter", sans-serif;
+    font-style: normal; font-size: 14px; color: var(--muted);
+  }
+
+  /* Linha do tempo */
+  .timeline { margin-top: 28px; position: relative; }
+  .timeline::before {
+    content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--line);
+  }
+  .event { position: relative; padding-left: 40px; padding-bottom: 28px; }
+  .event::before {
+    content: ""; position: absolute; left: 0; top: 7px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--bg); border: 3px solid var(--red);
+  }
+  .event .year {
+    font-family: "Fraunces", serif; font-weight: 800; font-size: 20px;
+  }
+  .event p { margin-top: 2px; color: var(--muted); }
+
+  /* Cards de leituras */
+  .readings {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px;
+  }
+  .reading {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+    padding: 22px 20px;
+  }
+  .reading .tag {
+    display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--red); background: var(--red-soft);
+    padding: 3px 8px; border-radius: 3px; margin-bottom: 12px;
+  }
+  .reading p { font-size: 15px; color: var(--muted); line-height: 1.6; }
+  @media (max-width: 720px) { .readings { grid-template-columns: 1fr; } }
+
+  /* Destaque */
+  .callout {
+    margin-top: 28px; background: var(--red-soft); border-radius: 6px;
+    padding: 24px; border: 1px solid var(--line);
+  }
+  .callout strong { color: var(--red); }
+
+  /* Aliança */
+  .alliance {
+    margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px;
+  }
+  .alliance span {
+    border: 1px solid var(--line); background: var(--surface);
+    border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 500;
+  }
+  .alliance span.hl { border-color: var(--red); color: var(--red); }
+
+  /* Fontes */
+  .sources { font-size: 15px; }
+  .sources ol { padding-left: 20px; margin-top: 12px; }
+  .sources li { margin-bottom: 8px; color: var(--muted); }
+
+  footer {
+    border-top: 1px solid var(--line); padding: 32px 16px;
+    text-align: center; font-size: 13px; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#top">
+      <span class="stripes"><span></span><span></span></span>
+      Arquibancada &amp; Símbolo
+    </a>
+    <nav>
+      <a href="#torcida">A torcida</a>
+      <a href="#chegada">A chegada do Che</a>
+      <a href="#sentidos">Significados</a>
+      <a href="#linha">Linha do tempo</a>
+      <a href="#fontes">Fontes</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div>
+    <div class="kicker">Cultura de arquibancada · São Paulo FC</div>
+    <h1>O rosto de um guerrilheiro na <em>bandeira tricolor</em></h1>
+    <p class="lede">Como a efígie de Che Guevara passou a tremular na Torcida Tricolor Independente, principal organizada do São Paulo Futebol Clube, e o que esse símbolo significa (ou deixa de significar) dentro do estádio.</p>
+    <div class="meta">
+      <span><b>Tema:</b> torcidas organizadas</span>
+      <span><b>Leitura:</b> ~7 min</span>
+    </div>
+  </div>
+  <div class="hero-card" aria-hidden="true">
+    <div class="label">Fundação</div>
+    <div class="big">1972</div>
+    <div class="spacer"></div>
+    <div class="label">Che nas arquibancadas brasileiras</div>
+    <div class="big" style="font-size:56px">anos 80–90</div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="n">17/04/1972</div><div class="t">Fundação oficial da Independente</div></div>
+    <div class="stat"><div class="n">1998</div><div class="t">Refundação após o fechamento judicial</div></div>
+    <div class="stat"><div class="n">6+</div><div class="t">Torcidas aliadas que usam o Che</div></div>
+    <div class="stat"><div class="n">Bonde do Che</div><div class="t">Ala antifascista da torcida</div></div>
+  </div>
+</div>
+
+<main>
+
+  <section id="torcida">
+    <div class="num">01</div>
+    <h2>Uma torcida que nasceu dizendo “independente”</h2>
+    <p>A Torcida Tricolor Independente (TTI) foi fundada em 17 de abril de 1972, no centro de São Paulo, a partir de uma cisão com a Torcida Uniformizada do São Paulo (TUSP), até então a única organizada do clube. O estopim, segundo relatos históricos, foi a percepção de desigualdade dentro da própria TUSP durante a viagem para a Libertadores daquele ano: dirigentes em hotéis de luxo, torcedores comuns em pensões.</p>
+    <p>O nome veio de Ricardo Rapp, um dos fundadores, inspirado nos movimentos de independência que aconteciam pelo mundo naquele período. A palavra traduzia o ideal central do grupo: total autonomia em relação à diretoria do clube. Para se diferenciar da TUSP, que usava o uniforme listrado, a nova torcida adotou como referência a camisa branca com as faixas horizontais vermelha e preta.</p>
+    <p>A estreia foi em 23 de abril de 1972, contra a Portuguesa, no Pacaembu. Nas décadas seguintes, a Independente cresceu junto com a era de títulos do São Paulo, passou por um fechamento determinado pela Justiça nos anos 1990 e foi refundada em 1998 com nova diretoria e novo CNPJ. Hoje, sua sede fica em frente ao Morumbi.</p>
+
+    <blockquote>
+      A ideia de “independência” está no DNA da torcida muito antes do Che aparecer nas bandeiras.
+      <cite>Síntese a partir do Museu do Futebol e do site oficial da torcida</cite>
+    </blockquote>
+  </section>
+
+  <section id="chegada">
+    <div class="num">02</div>
+    <h2>Como o Che chegou até o Morumbi</h2>
+    <p>O caminho do Che até a Independente não começa em São Paulo, e sim em Minas Gerais. No início dos anos 1990, o Comando Guerreiro do Eldorado, núcleo da Máfia Azul (Cruzeiro) em Contagem, procurava um ícone para se identificar. Depois de testar outras figuras, o grupo escolheu a imagem de um “guerreiro latino”: Che Guevara. A bandeira ficou famosa e começou a ser copiada.</p>
+    <p>Segundo o presidente do Comando, depois da Máfia Azul vieram a Independente, a Jovem Fla e a Torcida Jovem do Sport. O elo entre elas é uma rede de alianças entre organizadas que, nos anos 2000, ganhou o nome de <strong>União do Punho Cruzado</strong>. Essa união passou a cultivar a efígie de Che como um de seus símbolos comuns.</p>
+
+    <div class="alliance" aria-label="Torcidas ligadas à União do Punho Cruzado">
+      <span class="hl">Independente · São Paulo</span>
+      <span>Máfia Azul · Cruzeiro</span>
+      <span>Jovem Fla · Flamengo</span>
+      <span>Camisa 12 · Internacional</span>
+      <span>Torcida Jovem · Sport</span>
+      <span>Fanáticos · Athletico-PR</span>
+      <span>Dragões Atleticanos · Atlético-GO</span>
+    </div>
+
+    <div class="callout">
+      <strong>Ponto-chave:</strong> na Independente, o Che funciona antes de tudo como <em>marca de pertencimento a uma aliança</em> entre torcidas. Ele aparece em bandeirões, faixas e até em produtos da loja oficial, como bonés com o rosto bordado e a palavra “Independente”.
+    </div>
+  </section>
+
+  <section id="sentidos">
+    <div class="num">03</div>
+    <h2>O que o Che significa na arquibancada</h2>
+    <p>Pesquisadores que estudam o tema, como o artigo publicado na revista <em>Anos 90</em> (UFRGS), mostram que a figura de Che é apropriada pelas torcidas desde pelo menos os anos 1980 e ganha sentidos diferentes conforme o contexto. Três leituras aparecem com frequência:</p>
+
+    <div class="readings">
+      <div class="reading">
+        <div class="tag">Política</div>
+        <h3>Símbolo de esquerda</h3>
+        <p>Para parte dos torcedores, o Che representa a crítica ao capitalismo e a luta anti-imperialista. É o sentido assumido abertamente pelo Bonde do Che.</p>
+      </div>
+      <div class="reading">
+        <div class="tag">Identidade</div>
+        <h3>Rebeldia e guerra</h3>
+        <p>Para outros, o que importa é o “guerreiro”: coragem, enfrentamento, lealdade ao grupo. O Che vira um emblema de combate, quase desligado da ideologia.</p>
+      </div>
+      <div class="reading">
+        <div class="tag">Cultura pop</div>
+        <h3>Ícone visual</h3>
+        <p>A foto clássica de Alberto Korda virou estampa global. Muitos usam a imagem como identidade estética, sem vínculo com o que Che defendia.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px">O Bonde do Che</h3>
+    <p>Dentro da Independente existe uma ala que leva o símbolo ao pé da letra: o <strong>Bonde do Che</strong>, que se apresenta como o grupo antifascista da torcida. Em 2020, quando torcidas organizadas foram às ruas em atos contra o governo Bolsonaro, reportagens destacaram que várias organizadas que usam o Che optaram pela neutralidade. O Bonde do Che foi uma das exceções, com posicionamento político explícito.</p>
+
+    <h3 style="margin-top:32px">Uma tensão interna</h3>
+    <p>Há um contraste interessante: o site oficial da Independente descreve a torcida como fundada “sem vínculos políticos”, dedicada apenas ao São Paulo. Ao mesmo tempo, abriga uma ala assumidamente de esquerda e usa o rosto de um dos personagens mais politizados do século XX. Isso ilustra bem o ponto dos pesquisadores: nas arquibancadas, o mesmo símbolo convive com vários significados, e a torcida como instituição nem sempre adota o sentido que seus membros atribuem a ele.</p>
+
+    <h3 style="margin-top:32px">Um símbolo que divide</h3>
+    <p>Che Guevara é uma figura controversa: admirado por muitos como revolucionário e crítico da desigualdade, e rejeitado por outros pela violência da luta armada e pelas execuções no pós-revolução cubana. Essa polarização também aparece no futebol. Em Minas, a rival Galoucura (Atlético-MG) respondeu ao Che da Máfia Azul com bandeiras de René Barrientos, o presidente boliviano ligado à morte do guerrilheiro em 1967, transformando um debate histórico em provocação de clássico.</p>
+  </section>
+
+  <section id="linha">
+    <div class="num">04</div>
+    <h2>Linha do tempo</h2>
+    <div class="timeline">
+      <div class="event"><div class="year">1967</div><p>Che Guevara é morto na Bolívia. Sua imagem, a partir da foto de Korda, vira ícone mundial de rebeldia.</p></div>
+      <div class="event"><div class="year">1972</div><p>Fundação da Torcida Tricolor Independente, após dissidência com a TUSP. Estreia contra a Portuguesa, no Pacaembu.</p></div>
+      <div class="event"><div class="year">Anos 1980</div><p>Registros acadêmicos apontam as primeiras apropriações do Che por torcidas brasileiras.</p></div>
+      <div class="event"><div class="year">Início dos 1990</div><p>O Comando Guerreiro da Máfia Azul adota o Che, e a bandeira se espalha para torcidas aliadas, incluindo a Independente.</p></div>
+      <div class="event"><div class="year">1998</div><p>Após fechamento judicial, a torcida é refundada com nova diretoria.</p></div>
+      <div class="event"><div class="year">Anos 2000</div><p>Consolida-se a União do Punho Cruzado, aliança que tem o Che entre seus símbolos.</p></div>
+      <div class="event"><div class="year">2020</div><p>O Bonde do Che se destaca como ala abertamente política durante os atos antifascistas de torcidas.</p></div>
+    </div>
+  </section>
+
+  <section id="conclusao">
+    <div class="num">05</div>
+    <h2>Em resumo</h2>
+    <p>A relação entre a Independente e Che Guevara é menos uma declaração oficial de ideologia e mais o resultado de uma cultura de alianças entre torcidas. O símbolo chegou via Máfia Azul, virou marca da União do Punho Cruzado e foi incorporado às bandeiras e produtos da torcida. Para alguns integrantes, sobretudo no Bonde do Che, ele tem sentido político claro. Para outros, é sinônimo de rebeldia, pertencimento e identidade visual. É justamente essa pluralidade de significados que torna o caso um bom retrato de como símbolos políticos são reinterpretados nas arquibancadas brasileiras.</p>
+  </section>
+
+  <section id="fontes" class="sources">
+    <div class="num">Referências</div>
+    <h2>Fontes</h2>
+    <ol>
+      <li><a href="https://pt.wikipedia.org/wiki/Torcida_Independente" target="_blank" rel="noopener">Torcida Independente — Wikipédia</a></li>
+      <li><a href="https://museudofutebol.org.br/crfb/instituicoes/471243/" target="_blank" rel="noopener">Independente — Centro de Referência do Futebol Brasileiro (Museu do Futebol)</a></li>
+      <li><a href="https://ludopedio.org.br/arquibancada/independente-tricolor/" target="_blank" rel="noopener">Cronologia das torcidas organizadas (II): Independente Tricolor — Ludopédio</a></li>
+      <li><a href="https://torcidaindependente.com.br/historia/" target="_blank" rel="noopener">Nossa História — site oficial da Torcida Independente</a></li>
+      <li><a href="https://seer.ufrgs.br/index.php/anos90/article/view/129543" target="_blank" rel="noopener">As apropriações da figura de Che Guevara entre torcidas organizadas no Brasil — Revista Anos 90 (UFRGS)</a></li>
+      <li><a href="https://ludopedio.org.br/arquibancada/na-berlinda-da-rivalidade/" target="_blank" rel="noopener">Na berlinda da rivalidade — Ludopédio</a></li>
+      <li><a href="https://pagina12.com.br/esportes/2020/06/20/3959-torcidas-que-reverenciam-che-guevara-adotam-neutralidade-em-protestos-contra-bolsonaro" target="_blank" rel="noopener">Torcidas que reverenciam Che Guevara adotam neutralidade em protestos — Página 12</a></li>
+      <li><a href="https://peleja.com.br/torcidas/che-guevara-torcidas-organizadas-bandeirao/" target="_blank" rel="noopener">Por que o rosto do Che Guevara está em toda arquibancada brasileira — Peleja</a></li>
+      <li><a href="https://vermelho.org.br/2008/03/30/polemica-o-che-cruzeirense-x-rene-barrientos-atleticano/" target="_blank" rel="noopener">O Che cruzeirense x René Barrientos atleticano — Vermelho</a></li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  Página informativa independente, sem vínculo oficial com a Torcida Tricolor Independente ou com o São Paulo Futebol Clube.
+</footer>
+
+</body>
+</html>
