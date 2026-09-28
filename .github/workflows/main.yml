@@ -1,3 +1,5 @@
+Codeshare logo
+Expires in 24 hours  Save Codeshare ShareLog In
 name: CI + Deploy GitHub Pages
 
 on:
@@ -56,3 +58,137 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+1
+name: CI + Deploy GitHub Pages
+2
+​
+3
+on:
+4
+  push:
+5
+    branches: [main]
+6
+​
+7
+  pull_request:
+8
+    branches: [main]
+9
+​
+10
+  workflow_dispatch:
+11
+​
+12
+permissions:
+13
+  contents: read
+14
+  pages: write
+15
+  id-token: write
+16
+​
+17
+concurrency:
+18
+  group: "pages"
+19
+  cancel-in-progress: false
+20
+​
+21
+jobs:
+22
+  Mensagem:
+23
+    runs-on: ubuntu-latest
+24
+​
+25
+    steps:
+26
+      - name: Fazer o git clone
+27
+        uses: actions/checkout@v4
+28
+​
+29
+      - name: Executando primeiro comando
+30
+        run: |
+31
+          ls -l
+32
+          echo "Fim do Processo"
+33
+​
+34
+  deploy:
+35
+    if: github.event_name != 'pull_request'
+36
+    needs: Mensagem
+37
+​
+38
+    environment:
+39
+      name: github-pages
+40
+      url: ${{ steps.deployment.outputs.page_url }}
+41
+​
+42
+    runs-on: ubuntu-latest
+43
+​
+44
+    steps:
+45
+      - name: Checkout
+46
+        uses: actions/checkout@v4
+47
+​
+48
+      - name: Setup Pages
+49
+        uses: actions/configure-pages@v5
+50
+​
+51
+      - name: Upload artifact
+52
+        uses: actions/upload-pages-artifact@v3
+53
+        with:
+54
+          path: '.'
+55
+​
+56
+      - name: Deploy to GitHub Pages
+57
+        id: deployment
+58
+        uses: actions/deploy-pages@v5
+59
+​
+60
+  DOCKER:
+61
+      runs-on: ubuntu-latest
+62
+      steps:
+63
+        -
+
+
+
+
+Netlify
+One gateway for evey AI model
+px
+Hide Ads
